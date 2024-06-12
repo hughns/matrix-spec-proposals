@@ -715,8 +715,11 @@ homeserver specified:
 
 2. **New device checks if it can use an available protocol**
 
-Once the existing device knows which homeserver it is to use it then:
+Once the existing device has determined the server name it then undertakes steps to determine if it is able to work with the homeserver.
 
+The steps are as follows:
+
+- use [Server Discovery](https://spec.matrix.org/v1.10/client-server-api/#server-discovery) to determine the `base_url` from the well-known URI
 - checks that the homeserver is using delegated OIDC by calling `GET /_matrix/client/v1/auth_issuer` from [MSC2965](https://github.com/matrix-org/matrix-spec-proposals/pull/2965):
 
 *New device => Homeserver via HTTP*
@@ -862,7 +865,7 @@ sequenceDiagram
 
     rect rgba(0,255,0, 0.1)
     note over N: 2) New device checks if it can use an available protocol:
-
+    note over N: Use well-known discovery to get the homeserver base URL
         N->>+HS: GET /_matrix/client/v1/auth_issuer
     activate N
         HS-->>-N: 200 OK {"issuer": "https://id.matrix.org"}
@@ -933,6 +936,7 @@ sequenceDiagram
 
     rect rgba(0,255,0, 0.1)
     note over N: 2) New device checks if it can use an available protocol:
+    note over N: Use well-known discovery to get the homeserver base URL
         N->>+HS: GET /_matrix/client/v1/auth_issuer
     activate N
         HS-->>-N: 200 OK {"issuer": "https://id.matrix.org"}

@@ -57,8 +57,8 @@ subscribe │          │ get SFU authorisation
       └───────┘ └──────────┘               └──────────┘
           ▲                                      ▲
           │                                      │
-publish / │                         discover SFU │
-subscribe │                get SFU authorisation │
+publish / │                get SFU authorisation │
+subscribe │                                      │
           │                                      │
           │       ┌──────────────────────────────┴──┐
           └──────▶│            Client B             │

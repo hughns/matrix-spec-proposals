@@ -123,9 +123,33 @@ Below is an example of an appropriate membership event:
 }
 ```
 
-Clients MAY alternatively also discover available SFUs via other member's `m.rtc.member` events.
-If a client uses an SFU that does not belong to its own homeserver, it MUST include the associated
-[server name] in an additional `server_name` property under `published`.
+Client SHOULD use a local SFU discovered via their home server's `/_matrix/client/v1/rtc/transports`
+endpoint for publishing if possible. Alternatively, clients MAY also use remote SFUs discovered from
+other member's `m.rtc.member` events. This makes it possible to establish LiveKit-based RTC sessions
+if at least one member's home server provides an SFU.
+
+As will be explained later in this proposal, access to SFUs is guarded by access tokens acquired through
+the home server associated with each SFU. Therefore, clients that use a remote SFU MUST include the
+associated [server name] in an additional `server_name` property under `published`.
+
+```json5
+{
+  "type": "m.rtc.member",
+  "sender": "@alice:alice.com",
+  "content": {
+    "transports": {
+      "published": [{
+        "type": "m.livekit",
+        "url": "wss://livekit.example.com",
+        "server_name": "bob.com"
+      }],
+      ...
+    },
+    ...
+  },
+  ...
+}
+```
 
 [client SDKs]: https://docs.livekit.io/transport/sdk-platforms/
 [server name]: https://spec.matrix.org/v1.19/appendices/#server-name

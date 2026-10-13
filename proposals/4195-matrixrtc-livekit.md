@@ -284,9 +284,9 @@ a token for publishing, the client uses the server name and WebSocket URL as dis
 For subscribing to RTC media, clients need to connect to the publisher's chosen local SFU – which
 might be on a different server. In this case, the subscribing client derives the `server_name` and
 `url` parameters needed in the token request from the publisher's `m.rtc.member` event. In particular,
-`url` is taken from the respective `transports` array element in the event. `server_name` is obtained
-from the `server_name` property in the same array element if available or otherwise by parsing the
-event's `sender`.
+`url` is taken from the respective `transports.published` array element in the event. `server_name`
+is obtained from the `server_name` property in the same array element if available or otherwise by
+parsing the event's `sender`.
 
 Note that as explained [later], tokens always include the grant required for subscribing. This means
 that a token obtained for publishing on an SFU also allows the bearer to subscribe to RTC streams

@@ -429,7 +429,9 @@ to ensure these are set appropriately so that clients can connect correctly and 
 - `video.roomJoin`: MUST be `true`. This enables clients to join the LiveKit room if it exists. Note that
   when the [auto_create] feature is enabled on the SFU, this permission also allows a token holder to
   create the room it is trying to join in case it doesn't exist yet.
-- `video.canPublish`: MUST be `true` to allow members to publish RTC data on both local and remote SFUs.
+- `video.canPublish`: MUST be `true` when the requesting user belongs to the home server creating the
+  token to allow local users to publish RTC data. SHOULD also be `true` if the requesting user is from a
+  different server but servers MAY decide to restrict publishing rights.
 - `video.canSubscribe`: MUST be `true`. This lets clients subscribe to RTC data on both local and
   remote SFUs.
 - `video.canUpdateOwnMetadata`: SHOULD be `false`. This lets clients update their own metadata. No known

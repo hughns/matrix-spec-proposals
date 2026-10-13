@@ -113,7 +113,7 @@ Below is an example of an appropriate membership event:
     "transports": {
       "published": [{
         "type": "m.livekit",
-        "url": "wss://livekit.example.com"
+        "url": "wss://livekit.alice.com"
       }],
       "can_subscribe": [ "m.livekit" ]
     },
@@ -140,7 +140,7 @@ associated [server name] in an additional `server_name` property under `publishe
     "transports": {
       "published": [{
         "type": "m.livekit",
-        "url": "wss://livekit.example.com",
+        "url": "wss://livekit.bob.com",
         "server_name": "bob.com"
       }],
       ...

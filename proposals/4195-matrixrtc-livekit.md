@@ -123,7 +123,7 @@ Below is an example of an appropriate membership event:
 }
 ```
 
-Client SHOULD use a local SFU discovered via their home server's `/_matrix/client/v1/rtc/transports`
+Clients SHOULD use a local SFU discovered via their home server's `/_matrix/client/v1/rtc/transports`
 endpoint for publishing if possible. Alternatively, clients MAY also use remote SFUs discovered from
 other member's `m.rtc.member` events. This makes it possible to establish LiveKit-based RTC sessions
 if at least one member's home server provides an SFU.
@@ -734,6 +734,15 @@ SFUs. While this is a far more generally applicable architecture than peer-to-pe
 SFUs also act as single points of failure and may cause limitations in terms of privacy, latency and
 scalability. This shortcoming is deliberately accepted here. Other transports are free to cater to
 different needs in the future.
+
+### Downsides of different multi-SFU variations
+
+The pure multi-SFU mode, in which all RTC members publish to a local SFU, ensures fair resource sharing
+among servers. It does, however, also create multiple points of failure because a single SFU failing can
+fragment the session. The degenerate multi-SFU mode, in which all RTC members publish on a single SFU,
+inverses these up- and downsides in turn. This proposal chooses a middleground by recommending clients
+to publish on local SFUs while also allowing the usage of remote SFUs. A future proposal may further
+formalise the SFU convergence mechanism.
 
 ## Alternatives
 

@@ -129,8 +129,8 @@ other member's `m.rtc.member` events. This makes it possible to establish LiveKi
 sessions if at least one member's home server provides an SFU.
 
 As will be explained later in this proposal, access to SFUs is guarded by access tokens acquired through
-the home server associated with each SFU. Therefore, clients that use a remote SFU MUST include the
-associated [server name] in an additional `server_name` property under `published`.
+the home server associated with each SFU. Therefore, clients that publish on a remote SFU MUST include
+the associated [server name] in an additional `server_name` property under `published`.
 
 ```json5
 {

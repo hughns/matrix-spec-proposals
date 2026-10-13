@@ -125,8 +125,8 @@ Below is an example of an appropriate membership event:
 
 Clients SHOULD use a local SFU discovered via their home server's `/_matrix/client/v1/rtc/transports`
 endpoint for publishing if possible. Alternatively, clients MAY also use remote SFUs discovered from
-other member's `m.rtc.member` events. This makes it possible to establish LiveKit-based RTC sessions
-if at least one member's home server provides an SFU.
+other member's `m.rtc.member` events. This makes it possible to establish LiveKit-based MatrixRTC
+sessions if at least one member's home server provides an SFU.
 
 As will be explained later in this proposal, access to SFUs is guarded by access tokens acquired through
 the home server associated with each SFU. Therefore, clients that use a remote SFU MUST include the
